@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Encryption and Decryption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #fff;
+        }
+        .slide {
+            display: none;
+            padding: 40px;
+            background-color: #7a4c98; /* Violet color */
+            min-height: 100vh;
+        }
+        .active {
+            display: block;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .form-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        label, input, button {
+            margin: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #6c3387; /* Dark violet */
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #5a2c72;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .nav-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #6c3387;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #5a2c72;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Encrypt and Upload File -->
+    <div class="slide active" id="slide1">
+        <h1>Welcome to the File Encryption and Decryption System</h1>
+        <h2>Encrypt and Upload File</h2>
+        <div class="form-container">
+            <form action="/upload_with_encryption" method="POST" enctype="multipart/form-data">
+                <label for="file">Select file to upload:</label>
+                <input type="file" id="file" name="file" required>
+                <button type="submit">Upload with Encryption</button>
+            </form>
+        </div>
+        <div class="nav-buttons">
+            <a href="#slide2"><button>Next</button></a>
+        </div>
+    </div>
+
+    <!-- Slide 2: Generate OTP -->
+    <div class="slide" id="slide2">
+        <h2>Generate OTP</h2>
+        <div class="form-container">
+            <form action="/generate_otp" method="POST">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Generate OTP</button>
+            </form>
+        </div>
+        <div class="nav-buttons">
+            <a href="#slide1"><button>Previous</button></a>
+            <a href="#slide3"><button>Next</button></a>
+        </div>
+    </div>
+
+    <!-- Slide 3: Decrypt File Using OTP -->
+    <div class="slide" id="slide3">
+        <h2>Decrypt File</h2>
+        <div class="form-container">
+            <form action="/decrypt" method="POST">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" id="otp" name="otp" required>
+                <label for="filename">Enter filename to decrypt:</label>
+                <input type="text" id="filename" name="filename" required>
+                <button type="submit">Decrypt File</button>
+            </form>
+        </div>
+        <div class="nav-buttons">
+            <a href="#slide2"><button>Previous</button></a>
+            <a href="#slide4"><button>Next</button></a>
+        </div>
+    </div>
+
+    <!-- Slide 4: Delete File -->
+    <div class="slide" id="slide4">
+        <h2>Delete File</h2>
+        <div class="form-container">
+            <form action="/delete_file" method="POST">
+                <label for="filename">Enter filename to delete:</label>
+                <input type="text" id="filename" name="filename" required>
+                <button type="submit">Delete File</button>
+            </form>
+        </div>
+        <div class="nav-buttons">
+            <a href="#slide3"><button>Previous</button></a>
+        </div>
+    </div>
+
+</body>
+</html>
